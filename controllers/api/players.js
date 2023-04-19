@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const User = require('../../models/user');
+const Player = require('../../models/player');
 
 module.exports = {
   create,
@@ -9,17 +9,17 @@ module.exports = {
 };
 
 function checkToken(req, res) {
-  console.log(req.user);
+  console.log(req.player);
   res.json(req.exp);
 }
 
 async function login(req, res) {
   try {
-    const user = await User.findOne({email: req.body.email});
-    if (!user) throw new Error();
-    const match = await bcrypt.compare(req.body.password, user.password);
+    const player = await Player.findOne({email: req.body.email});
+    if (!player) throw new Error();
+    const match = await bcrypt.compare(req.body.password, player.password);
     if (!match) throw new Error();
-    const token = createJWT(user);
+    const token = createJWT(player);
     res.json(token);
   } catch {
     res.status(400).json('Bad Credentials');
@@ -28,8 +28,8 @@ async function login(req, res) {
 
 async function create(req, res) {
   try {
-    const user = await User.create(req.body);
-    const token = createJWT(user);
+    const player = await Player.create(req.body);
+    const token = createJWT(player);
     // The token is a string, but yes, we can
     // res.json a string
     res.json(token);
@@ -40,10 +40,10 @@ async function create(req, res) {
 }
 
 /*-- Helper Functions --*/
-function createJWT(user) {
+function createJWT(player) {
   return jwt.sign(
     // extra data for the payload
-    { user },
+    { player },
     process.env.SECRET,
     { expiresIn: '24h' }
   );

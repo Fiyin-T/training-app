@@ -13,7 +13,7 @@ const userSchema = new Schema({
     lowercase: true,
     required: true
   },
-  role: { type: String, required: true, enum: ['COACH', 'ASST COACH']},
+  role: { type: String, required: true },
   password: {
     type: String,
     trim: true,

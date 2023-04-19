@@ -1,11 +1,13 @@
 import './UserDetail.css';
 
-export default function UserDetail() {
+export default function UserDetail({ user }) {
   return (
-    <div className="UserDetail">
-      <div className="section-heading">
-        UserDetail Component
-      </div>
+
+    <div >
+      Loggedin User Details
+      <div>Name: {user.name}</div>
+      <div>Email: {user.email}</div>
+      <div>Role: {user.role}</div>
     </div>
   );
 }

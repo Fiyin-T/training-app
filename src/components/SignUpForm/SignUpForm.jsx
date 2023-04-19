@@ -49,10 +49,11 @@ export default class SignUpForm extends Component {
             <label>Email</label>
             <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
             <label>Role</label>
-              <select>
-                <option value={this.state.role}>COACH</option>
-                <option value={this.state.role}>ASST. COACH</option>
-              </select>
+            <input type="text" name="role" value={this.state.role} onChange={this.handleChange} required />
+              {/* <select name="role" value={this.state.role} required>
+                <option>COACH</option>
+                <option>ASST. COACH</option>
+              </select> */}
             <label>Password</label>
             <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
             <label>Confirm</label>
