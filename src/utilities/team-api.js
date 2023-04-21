@@ -5,4 +5,8 @@ const BASE_URL = '/api/team';
 
 export function getTeam() {
     return sendRequest(`${BASE_URL}`);
-  }
+}
+
+// export function getProfile() {
+//     return sendRequest(`${BASE_URL}/player/:id`);
+// }

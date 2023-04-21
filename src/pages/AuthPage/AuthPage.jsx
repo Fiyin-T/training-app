@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import UserLoginForm from '../../components/UserLoginForm/UserLoginForm';
+import PlayerLoginForm from '../../components/PlayerLoginForm/PlayerLoginForm';
 
-export default function AuthPage({ setUser }) {
+export default function AuthPage({ setUser, setPlayer }) {
   const [showSignUp, setShowSignUp] = useState(false);
   return (
     <main>
@@ -11,7 +12,12 @@ export default function AuthPage({ setUser }) {
       { showSignUp ?
           <SignUpForm setUser={setUser} />
           :
-          <UserLoginForm setUser={setUser} />
+          <>
+            <UserLoginForm setUser={setUser} />
+            <h2>Player Login</h2>
+            <PlayerLoginForm setPlayer={setPlayer} />
+          </>
+
       }
     </main>
   );

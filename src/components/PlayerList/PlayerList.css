@@ -14,7 +14,7 @@
     
 .PlayerList li:hover:not(.active) {
   cursor: pointer;
-  background-color: var(--orange);
+  background-color: var(--pale-blue);
   color: var(--white);
 }
 

@@ -14,3 +14,12 @@ export function login(credentials) {
 export function checkToken() {
     return sendRequest(`${BASE_URL}/check-token`);
 }
+
+
+export function deletePlayer(id) {
+    return sendRequest(`${BASE_URL}/${id}/delete`, 'DELETE');
+}
+
+export function getPlayerProfile(id) {
+    return sendRequest(`${BASE_URL}/${id}`);
+}

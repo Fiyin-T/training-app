@@ -1,29 +1,29 @@
 import './TeamTable.css';
 
-export default function TeamTable( { teamPlayer } ) {
+export default function TeamTable( { teamPlayer, handlePlayerDelete, handlePlayerProfile } ) {
+
+  const handleClick = () => {
+    handlePlayerDelete(teamPlayer._id)
+  }
+
+  const handleProfile = () => {
+    handlePlayerProfile(teamPlayer._id)
+  }
 
   return (
     <div className="TeamTable">
       <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Position</th>
-            <th>Height(cm)</th>
-            <th>Preferred Foot</th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
-            <td>{teamPlayer.name}</td>
+            <td><button onClick={handleProfile}>{teamPlayer.name}</button></td>
             <td>{teamPlayer.age}</td>
             <td>{teamPlayer.position}</td>
             <td>{teamPlayer.height}</td>
             <td>{teamPlayer.preferredFoot}</td>
+            <td><button onClick={handleClick}>❌</button></td>
           </tr>
         </tbody>
-      </table>
+      </table> 
     </div>
   );
 }

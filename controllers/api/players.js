@@ -5,7 +5,9 @@ const Player = require('../../models/player');
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
+  delete:playerDelete,
+  show
 };
 
 function checkToken(req, res) {
@@ -21,7 +23,8 @@ async function login(req, res) {
     if (!match) throw new Error();
     const token = createJWT(player);
     res.json(token);
-  } catch {
+  } catch(err){
+    console.log(err)
     res.status(400).json('Bad Credentials');
   }
 }
@@ -38,6 +41,29 @@ async function create(req, res) {
     res.status(400).json(err);
   }
 }
+
+async function playerDelete(req, res) {
+  try{
+    const player = await Player.findByIdAndDelete(req.params.id);
+    res.json(player);
+    console.log(req.params.id)
+  } catch(err){
+    console.log(err)
+    res.status(400).json(err);
+  }
+
+}
+
+async function show(req, res) {
+  try {
+    const player = await Player.findById(req.params.id);
+    res.json(player)
+  } catch (err) {
+    console.log(err)
+    res.status(400).json(err)
+  }
+}
+
 
 /*-- Helper Functions --*/
 function createJWT(player) {

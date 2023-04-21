@@ -28,7 +28,7 @@ const playerSchema = new Schema({
     position: {type: String, required: true},
     height: {type: Number, required: true},
     preferredFoot: {type: String, required: true},
-    // trainings: [trainingSchema]
+    trainings: [trainingSchema]
 }, {
     timestamps: true,
     toJSON: {
