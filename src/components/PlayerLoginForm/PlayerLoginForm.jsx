@@ -17,9 +17,6 @@ export default function PlayerLoginForm({ setPlayer }) {
     // Prevent form from being submitted to the server
     evt.preventDefault();
     try {
-      // The promise returned by the signUp service method 
-      // will resolve to the user object included in the
-      // payload of the JSON Web Token (JWT)
       const player = await playerService.login(credentials);
       setPlayer(player);
     } catch(err){
@@ -29,17 +26,21 @@ export default function PlayerLoginForm({ setPlayer }) {
   }
 
   return (
-    <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
-        </form>
+    <>
+      <div className='auth-form'>
+        <div className="auth-form-container">
+          <form autoComplete="off" onSubmit={handleSubmit}>
+            <label>Email</label>
+            <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
+            <label>Password</label>
+            <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+            <button type="submit">LOG IN</button>
+          </form>
+        </div>
       </div>
       <p className="error-message">&nbsp;{error}</p>
-    </div>
+    </>
+
+
   );
 }
