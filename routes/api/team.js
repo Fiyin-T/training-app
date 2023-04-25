@@ -4,6 +4,5 @@ const teamCtrl = require('../../controllers/api/team');
 
 // GET /api/team
 router.get('/', teamCtrl.index);
-// GET /api/team/player/id
 
 module.exports = router;
