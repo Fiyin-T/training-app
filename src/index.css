@@ -84,17 +84,29 @@ code {
   border-radius: 1vmin;
 }
 
+.auth-form-container {
+  padding: 3vmin;
+  background-color: var(--tan-1);
+  border: .1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  width: 50%;
+}
+
+.auth-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 p.error-message {
   color: var(--pale-blue);
   text-align: center;
 }
 
-form {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1.25vmin;
+ form {
+  gap: 1.25vmin; 
   color: var(--text-light);
-}
+} 
 
 label {
   font-size: 2vmin;
