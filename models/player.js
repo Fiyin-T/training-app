@@ -18,6 +18,7 @@ const trainingSchema = new Schema({
 const playerSchema = new Schema({
     name: {type: String, required: true},
     email: { type: String, unique: true, trim: true, lowercase: true, required: true },
+    isPlayer: { type: Boolean, default: true },
     password: {
         type: String,
         trim: true,
@@ -25,9 +26,9 @@ const playerSchema = new Schema({
         required: true
       },
     age: {type: Number, required: true},
-    position: {type: String, required: true},
+    position: {type: String, required: true, enum: ['Goal Keeper', 'Defender', 'Mid-Fielder', 'Forward']},
     height: {type: Number, required: true},
-    preferredFoot: {type: String, required: true},
+    preferredFoot: {type: String, required: true, enum: ['Left', 'Right']},
     trainings: [trainingSchema]
 }, {
     timestamps: true,
@@ -40,7 +41,7 @@ const playerSchema = new Schema({
 })
 
 playerSchema.pre('save', async function(next) {
-    // 'this' is the user doc
+    // 'this' is the player doc
     if (!this.isModified('password')) return next();
     // the password is either new, or being updated
     this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
