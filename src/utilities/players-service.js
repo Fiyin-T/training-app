@@ -6,14 +6,6 @@
 // Import all named exports
 import * as playersAPI from './players-api';
 
-export async function signUp(playerData) {
-  // Delegate the AJAX request to the players-api.js
-  // module.
-  const token = await playersAPI.signUp(playerData);
-  localStorage.setItem('token', token);
-  // return token
-  return getPlayer();
-}
 
 export function getToken() {
   // getItem will return null if the key does not exist
@@ -52,4 +44,9 @@ export async function login(credentials) {
 export async function checkToken() {
   return playersAPI.checkToken()
     .then(dateStr => new Date(dateStr));
+}
+
+export async function addTraining(trainingData, playerId) {
+  const training = await playersAPI.addTraining(trainingData, playerId);
+  return training
 }
