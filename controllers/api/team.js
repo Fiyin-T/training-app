@@ -6,8 +6,8 @@ module.exports = {
 
 async function index(req, res) {
     try {
-        const players = await Player.find({})
-        res.json(players);
+      const players = await Player.find({})
+      res.json(players);
     }
     catch(err) {
     console.log(err)

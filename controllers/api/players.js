@@ -1,13 +1,16 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const Player = require('../../models/player');
+const Training = require('../../models/player')
 
 module.exports = {
   create,
   login,
   checkToken,
   delete:playerDelete,
-  show
+  show,
+  addTraining,
+  trainings
 };
 
 function checkToken(req, res) {
@@ -32,12 +35,11 @@ async function login(req, res) {
 async function create(req, res) {
   try {
     const player = await Player.create(req.body);
-    const token = createJWT(player);
+    // const token = createJWT(player);
     // The token is a string, but yes, we can
     // res.json a string
-    res.json(token);
+    res.json(player);
   } catch (err) {
-    console.log(err)
     res.status(400).json(err);
   }
 }
@@ -46,9 +48,7 @@ async function playerDelete(req, res) {
   try{
     const player = await Player.findByIdAndDelete(req.params.id);
     res.json(player);
-    console.log(req.params.id)
   } catch(err){
-    console.log(err)
     res.status(400).json(err);
   }
 
@@ -59,11 +59,30 @@ async function show(req, res) {
     const player = await Player.findById(req.params.id);
     res.json(player)
   } catch (err) {
-    console.log(err)
     res.status(400).json(err)
   }
 }
 
+async function addTraining(req, res) {
+  try {
+    const player = await Player.findById(req.params.id)
+    player.trainings.push(req.body)
+    player.save()
+    res.json(player)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+}
+
+async function trainings(req, res) {
+  try {
+    const player = await Player.findById(req.params.id);
+    const trainings = player.trainings
+    res.json(trainings)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+}
 
 /*-- Helper Functions --*/
 function createJWT(player) {
