@@ -5,6 +5,7 @@
 
 // Import all named exports
 import * as usersAPI from './users-api';
+import * as playersAPI from './players-api';
 
 export async function signUp(userData) {
   // Delegate the AJAX request to the users-api.js
@@ -12,6 +13,13 @@ export async function signUp(userData) {
   const token = await usersAPI.signUp(userData);
   localStorage.setItem('token', token);
   return getUser();
+}
+
+export async function addPlayer(playerData) {
+  // Delegate the AJAX request to the players-api.js
+  // module.
+  const player = await playersAPI.addPlayer(playerData);
+  return player
 }
 
 export function getToken() {
