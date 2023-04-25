@@ -1,7 +1,7 @@
 import './TeamList.css';
 import TeamTable from '../TeamTable/TeamTable';
 
-export default function TeamList( { teamPlayers, handlePlayerDelete, handlePlayerProfile }) {
+export default function TeamList( { user, teamPlayers, handlePlayerDelete, handlePlayerProfile }) {
   const players = teamPlayers.map(player =>
     <TeamTable
       key={player._id}
@@ -19,7 +19,7 @@ export default function TeamList( { teamPlayers, handlePlayerDelete, handlePlaye
                 <th>Name</th>
                 <th>Age</th>
                 <th>Position</th>
-                <th>Height(cm)</th>
+                <th>Height[cm]</th>
                 <th>Preferred Foot</th>
               </tr>
             </thead>
