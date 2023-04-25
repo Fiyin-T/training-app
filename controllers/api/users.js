@@ -35,7 +35,6 @@ async function create(req, res) {
     // res.json a string
     res.json(token);
   } catch (err) {
-    console.log(err)
     res.status(400).json(err);
   }
 }
