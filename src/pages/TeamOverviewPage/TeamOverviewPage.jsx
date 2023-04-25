@@ -9,6 +9,8 @@ import * as teamAPI from '../../utilities/team-api'
 import * as playerAPI from '../../utilities/players-api'
 import PlayerDetail from '../../components/PlayerDetail/PlayerDetail'
 import PlayerProfile from '../../components/PlayerProfile/PlayerProfile'
+import TrainingForm from '../../components/TrainingForm/TrainingForm'
+import TrainingDetails from '../../components/TrainingDetails/TrainingDetails'
 
 
 export default function TeamOverviewPage() {
@@ -21,6 +23,8 @@ export default function TeamOverviewPage() {
 
   const [ playerProfile, setPlayerProfile] = useState([])
 
+  const [ playerTrainings, setPlayerTrainings] = useState([])
+
   useEffect(function() {
     async function getPlayers() {
       const teamPlayers = await teamAPI.getTeam();
@@ -28,7 +32,7 @@ export default function TeamOverviewPage() {
     }
     getPlayers();
 
-  },[]);
+  },[teamPlayers]);
 
     // Event handlers
     async function handlePlayerDelete(playerId) {
@@ -39,15 +43,28 @@ export default function TeamOverviewPage() {
     async function handlePlayerProfile(playerId) {
       const playerProfile = await playerAPI.getPlayerProfile(playerId)
       setPlayerProfile(playerProfile)
+      console.log(playerProfile)
+      handlePlayerTraining(playerId)
+    }
+
+    async function handlePlayerTraining(playerId){
+      const playerTrainings = await playerAPI.getPlayerTrainings(playerId)
+      setPlayerTrainings(playerTrainings)
+      console.log(playerTrainings)
     }
 
 
   return (
-    <main>
+    <main className='container'>
+      <h5>Team Overview Page</h5>
       <div className='TeamOverviewPage'>
           <div>
-            <h4>Team Overview Page</h4>
-            <TeamList teamPlayers={teamPlayers} setTeamPlayers={setTeamPlayers} handlePlayerDelete={handlePlayerDelete} handlePlayerProfile={handlePlayerProfile}/>
+            <TeamList user={user} setUser={setUser} 
+              player={player} setPlayer={setPlayer} 
+              teamPlayers={teamPlayers} setTeamPlayers={setTeamPlayers} 
+              handlePlayerDelete={handlePlayerDelete} playerProfile={playerProfile} 
+              handlePlayerProfile={handlePlayerProfile} 
+            />
           </div>
           <div> 
             { user ?
@@ -60,10 +77,17 @@ export default function TeamOverviewPage() {
             }
           </div>
       </div>
-      <div className='PlayerDetails'>
-        <PlayerProfile playerProfile={playerProfile} setPlayerProfile={setPlayerProfile}/>
-        {/* <TrainingDetails /> */}
-      </div>
+      { playerProfile.length === 0 ?
+        <p></p>
+        :
+        <div className='PlayerDetails'>
+          <PlayerProfile playerProfile={playerProfile} setPlayerProfile={setPlayerProfile} 
+            handlePlayerProfile={handlePlayerProfile} 
+          />
+          <TrainingDetails playerTrainings={playerTrainings} playerProfile={playerProfile} />
+          <TrainingForm playerProfile={playerProfile} />   
+        </div>
+      }
     </main>
 
   );
