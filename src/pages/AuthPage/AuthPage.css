@@ -13,3 +13,7 @@
   color: var(--text-light);
   cursor: pointer;
 }
+
+h4 {
+  color: white;
+}
