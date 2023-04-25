@@ -1,0 +1,27 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    grid-area: nav;
+    height: 60px;
+    padding: 0 20px 0 10px;
+    background-color:var(--pale-blue);
+}
+
+span{
+    margin: auto;
+    width: auto;
+    height: auto;
+}
+
+span:hover:not(.active) {
+    cursor: pointer;
+    background-color: white;
+}
+  
+span.active {
+    color: var(--text-dark);
+    background-color: var(--tan-2);
+    border: .1vmin solid var(--tan-3);
+}
