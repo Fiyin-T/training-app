@@ -1,0 +1,21 @@
+.training-table {
+    width: 100%;
+}
+  
+.training-table thead th:nth-child(1){
+    width: 20%;
+}
+.training-table thead th:nth-child(2){
+  width: 50%;
+}
+.training-table thead th:nth-child(3){
+  width: auto;
+}
+
+th, td {
+  padding: 5px;
+}
+
+tbody td {
+  text-align: center;
+}
