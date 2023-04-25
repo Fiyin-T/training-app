@@ -3,7 +3,7 @@
 import sendRequest from './send-request';
 const BASE_URL = '/api/players';
 
-export function signUp(playerData) {
+export function addPlayer(playerData) {
     return sendRequest(BASE_URL, 'POST', playerData);
 }
   
@@ -22,4 +22,12 @@ export function deletePlayer(id) {
 
 export function getPlayerProfile(id) {
     return sendRequest(`${BASE_URL}/${id}`);
+}
+
+export function addTraining(trainingData, playerId) {
+    return sendRequest(`${BASE_URL}/${playerId}/trainings`, 'POST', trainingData)
+}
+
+export function getPlayerTrainings(playerId) {
+    return sendRequest(`${BASE_URL}/trainings/${playerId}`);
 }
