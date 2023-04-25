@@ -1,7 +1,7 @@
 import './TeamTable.css';
 
-export default function TeamTable( { teamPlayer, handlePlayerDelete, handlePlayerProfile } ) {
-
+export default function TeamTable( { player, teamPlayer, handlePlayerDelete, handlePlayerProfile } ) {
+  
   const handleClick = () => {
     handlePlayerDelete(teamPlayer._id)
   }
@@ -12,7 +12,7 @@ export default function TeamTable( { teamPlayer, handlePlayerDelete, handlePlaye
 
   return (
     <div className="TeamTable">
-      <table>
+      <table className='Team-Table'>
         <tbody>
           <tr>
             <td><button onClick={handleProfile}>{teamPlayer.name}</button></td>
