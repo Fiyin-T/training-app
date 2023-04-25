@@ -3,11 +3,13 @@ import './UserDetail.css';
 export default function UserDetail({ user }) {
   return (
 
-    <div >
-      Loggedin User Details
-      <div>Name: {user.name}</div>
-      <div>Email: {user.email}</div>
-      <div>Role: {user.role}</div>
+    <div className='card'>
+      <div className='card-content'>
+        Loggedin User Details
+        <p>Name: {user.name}</p>
+        <p>Email: {user.email}</p>
+        <p>Role: {user.role}</p>
+      </div>
     </div>
   );
 }
