@@ -6,6 +6,7 @@
   background-color: var(--white);
   border-radius: 2vmin;
   grid-gap: 10px;
+  min-height: 100vh;
 }
 
 .PlayerDetails {
@@ -24,4 +25,15 @@
 
 h5 {
   color: white;
+}
+
+@media only screen and (max-width: 414px) {
+  .TeamOverviewPage {
+    grid-template-columns: 210px 140px;
+    grid-gap: 5px;
+  }
+  .PlayerDetails {
+    grid-template-columns: 350px;
+    grid-gap: 10px;
+  }
 }
