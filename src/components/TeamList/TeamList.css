@@ -34,3 +34,9 @@ thead th:nth-child(6){
 thead th {
   text-align: center;
 } 
+
+@media only screen and (max-width: 414px) {
+  .TeamList {
+    width: 95%;
+  }
+}
