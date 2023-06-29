@@ -25,3 +25,13 @@ span.active {
     background-color: var(--tan-2);
     border: .1vmin solid var(--tan-3);
 }
+
+@media only screen and (max-width: 414px) {
+    nav {
+        padding: 0;
+    }
+    ul.right{
+        width: 100%;
+        font-size: smaller;
+    }
+}
