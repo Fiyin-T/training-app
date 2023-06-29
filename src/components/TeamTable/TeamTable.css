@@ -35,3 +35,9 @@ table {
     background-color: var(--tan-2);
     border: .1vmin solid var(--tan-3);
   }
+
+  @media only screen and (max-width: 414px) {
+    .Team-Table {
+      width: 350px;
+    }
+  }
