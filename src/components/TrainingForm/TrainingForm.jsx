@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react';
 import { addTraining } from '../../utilities/players-service';
 import M from "materialize-css"
+import './TrainingForm.css'
 
 export default function TrainingForm( {playerProfile }) {
 
@@ -41,7 +42,7 @@ export default function TrainingForm( {playerProfile }) {
   }
 
     return (
-      <div>
+      <div className='TrainingForm'>
         <div className="form-container">
             ADD TRAINING
           <form autoComplete="off" onSubmit={handleSubmit}>
