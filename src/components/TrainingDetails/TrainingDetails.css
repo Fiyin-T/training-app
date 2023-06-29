@@ -19,3 +19,10 @@ th, td {
 tbody td {
   text-align: center;
 }
+
+@media only screen and (max-width: 414px) {
+  .TrainingDetails {
+      margin: 0 0 10px 15px; 
+      width: 90%;
+  }
+}
