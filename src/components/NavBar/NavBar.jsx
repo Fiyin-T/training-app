@@ -29,7 +29,6 @@ export default function NavBar({ user, setUser, player, setPlayer }) {
           <ul className='right'>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/">Team</Link></li>
-            <li><Link to="/team-profile">Profiles</Link></li>
             { user ?
               <>
                 <li>Welcome, {user.name}</li>
